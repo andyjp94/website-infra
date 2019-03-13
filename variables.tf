@@ -14,3 +14,13 @@ variable "www" {
   type    = "string"
   default = "true"
 }
+
+variable "lambda" {
+  type = "map"
+
+  default = {
+    file_path = ""
+    handler   = ""
+    runtime   = ""
+  }
+}
