@@ -15,6 +15,11 @@ variable "www" {
   default = "true"
 }
 
+variable "log_bucket" {
+  type    = "string"
+  default = ""
+}
+
 variable "lambda" {
   type = "map"
 

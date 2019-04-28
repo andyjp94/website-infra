@@ -12,7 +12,7 @@ resource "aws_cloudfront_distribution" "self" {
 
   logging_config {
     include_cookies = false
-    bucket          = "${aws_s3_bucket.logs.bucket_domain_name}"
+    bucket          = "${var.log_bucket}"
     prefix          = "cloudfront/top_domain"
   }
 
@@ -56,8 +56,4 @@ resource "aws_cloudfront_distribution" "self" {
     ssl_support_method       = "sni-only"
     minimum_protocol_version = "TLSv1.1_2016"
   }
-}
-
-resource "aws_s3_bucket" "logs" {
-  bucket = "ajp-logs"
 }
