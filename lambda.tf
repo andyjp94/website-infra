@@ -8,7 +8,7 @@ resource "aws_lambda_function" "security_lambda" {
   function_name    = "${lookup(var.lambda,"name", "")}"
   role             = "${data.aws_iam_role.cloudfront_access.arn}"
   handler          = "${lookup(var.lambda,"handler", "")}"
-  source_code_hash = "${data.archive_file.source.output_base64sha256}"
+  source_code_hash = "${file(lookup(var.lambda,"file_path", ""))}"
   runtime          = "${lookup(var.lambda,"runtime", "")}"
   publish          = true
 }
