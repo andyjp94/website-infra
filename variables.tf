@@ -19,6 +19,7 @@ variable "lambda" {
   type = "map"
 
   default = {
+    name      = ""
     file_path = ""
     handler   = ""
     runtime   = ""

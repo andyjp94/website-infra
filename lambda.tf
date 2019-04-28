@@ -4,8 +4,8 @@ data "aws_iam_role" "cloudfront_access" {
 
 resource "aws_lambda_function" "security_lambda" {
   provider         = "aws.virginia"
-  function_name    = "add-security-headers"
   filename         = "${lookup(var.lambda,"file_path", "")}"
+  function_name    = "${lookup(var.lambda,"name", "")}"
   role             = "${data.aws_iam_role.cloudfront_access.arn}"
   handler          = "${lookup(var.lambda,"handler", "")}"
   source_code_hash = "${data.archive_file.source.output_base64sha256}"
