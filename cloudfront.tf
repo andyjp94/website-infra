@@ -16,7 +16,7 @@ resource "aws_cloudfront_distribution" "self" {
     prefix          = "cloudfront/top_domain"
   }
 
-  aliases = ["www.${var.domain_name}", "${var.domain_name}"]
+  aliases = ["${split(",", var.www ? join(",", list(format("www.%s",var.domain_name), var.domain_name)) : join(",",list(var.domain_name)))}"]
 
   default_cache_behavior {
     allowed_methods  = ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"]
