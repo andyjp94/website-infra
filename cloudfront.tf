@@ -39,7 +39,7 @@ resource "aws_cloudfront_distribution" "self" {
 
     lambda_function_association {
       event_type = "origin-response"
-      lambda_arn = "${aws_lambda_function.security_lambda.qualified_arn}" #${aws_lambda_function.security_lambda.version}
+      lambda_arn = "${aws_lambda_function.security_lambda.qualified_arn}"
     }
   }
 
