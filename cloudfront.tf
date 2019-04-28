@@ -13,7 +13,7 @@ resource "aws_cloudfront_distribution" "self" {
   logging_config {
     include_cookies = false
     bucket          = "${var.log_bucket}"
-    prefix          = "cloudfront/top_domain"
+    prefix          = "cloudfront/${var.domain_name}"
   }
 
   aliases = ["${split(",", var.www ? join(",", list(format("www.%s",var.domain_name), var.domain_name)) : join(",",list(var.domain_name)))}"]
